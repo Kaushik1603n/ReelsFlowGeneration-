@@ -10,47 +10,6 @@ app.use(cors(), express.json());
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // Define the precise schema based on your sample
-// const responseSchema = {
-//   type: SchemaType.OBJECT,
-//   properties: {
-//     rules: {
-//       type: SchemaType.ARRAY,
-//       items: {
-//         type: SchemaType.OBJECT,
-//         properties: {
-//           id: { type: SchemaType.STRING },
-//           rule_name: { type: SchemaType.STRING },
-//           rule_type: { type: SchemaType.STRING },
-//           node_type: { type: SchemaType.STRING },
-//           rule_versions: {
-//             type: SchemaType.ARRAY,
-//             items: {
-//               type: SchemaType.OBJECT,
-//               properties: {
-//                 version: { type: SchemaType.STRING },
-//                 rule_expression: {
-//                   type: SchemaType.OBJECT,
-//                   properties: {
-//                     rule_expression: {
-//                       type: SchemaType.OBJECT,
-//                       properties: {
-//                         rows: { type: SchemaType.ARRAY, items: { type: SchemaType.ARRAY, items: { type: SchemaType.OBJECT, properties: { id: { type: SchemaType.STRING }, value: { type: SchemaType.STRING }, operator: { type: SchemaType.OBJECT, properties: { id: { type: SchemaType.NUMBER }, icon: { type: SchemaType.STRING }, name: { type: SchemaType.STRING } } } } } } },
-//                         headers: { type: SchemaType.ARRAY, items: { type: SchemaType.OBJECT, properties: { id: { type: SchemaType.STRING }, type: { type: SchemaType.STRING }, header: { type: SchemaType.OBJECT, properties: { path: { type: SchemaType.STRING }, dataType: { type: SchemaType.STRING } } } } } },
-//                         defaultRow: { type: SchemaType.ARRAY, items: { type: SchemaType.OBJECT, properties: { id: { type: SchemaType.STRING }, value: { type: SchemaType.STRING }, operator: { type: SchemaType.OBJECT, properties: { id: { type: SchemaType.NUMBER }, icon: { type: SchemaType.STRING } } } } } }
-//                       }
-//                     }
-//                   }
-//                 },
-//                 input_json_schema: { type: SchemaType.OBJECT, properties: { type: { type: SchemaType.STRING }, properties: { type: SchemaType.OBJECT } } },
-//                 output_json_schema: { type: SchemaType.OBJECT, properties: { type: { type: SchemaType.STRING }, properties: { type: SchemaType.OBJECT } } }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// };
 const responseSchema = {
   type: SchemaType.OBJECT,
   properties: {
@@ -128,7 +87,6 @@ const responseSchema = {
                     }
                   }
                 },
-                // ✅ FIXED: Added properties to satisfy the 'non-empty' requirement
                 input_json_schema: { 
                   type: SchemaType.OBJECT, 
                   properties: { 
